@@ -1,81 +1,64 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import dayjs from 'dayjs';
+import { ExternalLink } from 'astro-feather-icons';
+
+const dateOfBirth = dayjs('2007-06-07')
+const now = dayjs()
+
+const age = now.diff(dateOfBirth, 'year')
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+	<main class="min-h-screen w-full bg-black flex flex-col lg:flex-row text-white">
+		<div class="pl-2 font-display grid grid-cols-1 grid-rows-1 mt-6 lg:mt-0 lg:w-1/6">
+			<h1 class="text-2xl lg:text-[15vw] lg:-rotate-90 place-self-center">peony</h1>
+		</div>
+		<div class="lg:ml-12 px-6 mt-12 flex flex-col justify-center w-full text-sm lg:text-base">
+			<h1 class="font-bold text-xl lg:text-2xl pb-2">ABOUT ME</h1>
+			<p>
+				hi! i'm peony, and i'm a self taught progammer!<br />
+				i'm currently { age }, and i'm from 🇵🇱 poland!<br />
+				i go by she/her!
+			</p>
+
+			<h1 class="font-bold text-xl lg:text-2xl pt-12 pb-2">PROJECTS</h1>
+			<p>
+				<span class="flex lg:flex-row flex-col space-x-1">
+					<a class="underline font-semibold flex space-x-0.5 items-center hover:text-neutral-400" href="https://github.com/peonii/moonstone"><span>moonstone</span> <ExternalLink size="16" /></a><span>- an automatic testing suite for algorithms</span><br />
+				</span>
+				<span class="flex space-x-1">
+					<span class="font-semibold">inertia</span>
+					<span>- an irl game manager for</span>
+					<a class="underline flex space-x-0.5 items-center hover:text-neutral-400" href="https://www.youtube.com/c/jetlagthegame"><span>jet-lag-type</span> <ExternalLink size="16" /></a><span>games</span><br />
+				</span>
+				<span class="font-semibold">cosmolight</span> - ???<br />
+			</p>
+
+			<h1 class="font-bold text-xl lg:text-2xl pt-12 pb-2">SOCIALS</h1>
+			<p>
+				<span class="text-neutral-400">if possible, please dm me on discord!</span>
+				<br />
+				<span class="flex space-x-1">
+					<span>discord -</span>
+					<button onclick="navigator.clipboard.writeText('peony#6666')" class="rounded-sm hover:bg-neutral-800 font-semibold">peony#6666</button><span class="text-neutral-500 ml-1">(click to copy)</span><br />
+				</span>
+				<span class="flex space-x-1">
+					<span>twitter -</span>
+					<a class="underline font-semibold flex space-x-0.5 items-center hover:text-neutral-400" href="https://twitter.com/peoniaee"><span>@peoniaee</span> <ExternalLink size="16" /></a>
+				</span>
+				<span class="flex space-x-1">
+					<span>youtube -</span>
+					<a class="underline font-semibold flex space-x-0.5 items-center hover:text-neutral-400" href="https://youtube.com/@peony6666"><span>@peony6666</span> <ExternalLink size="16" /></a>
+				</span>
+				<br />
+				<p class="text-neutral-400">or maybe if you're of the traditional sort...</p>
+				<span class="flex space-x-1">
+					<span>email -</span>
+					<a class="underline font-semibold flex space-x-0.5 items-center hover:text-neutral-400" href="mailto:mail@peony.wtf"><span>mail@peony.wtf</span> <ExternalLink size="16" /></a>
+				</span>
+			</p>
+		</div>
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
